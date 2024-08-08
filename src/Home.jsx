@@ -1,5 +1,4 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -8,6 +7,21 @@ const Home = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const loading = useSelector((state) => state.isLoading);
+  function getData() {
+    dispatch({ type: "SET_LOADING", payload: true });
+    axios
+      .get("https://crud-backend-red.vercel.app/api/items")
+      .then((response) => {
+        dispatch({ type: "SET_LOADING", payload: false });
+        dispatch({ type: "SET_ERROR", payload: false });
+        dispatch({ type: "SET_DATA", payload: response.data });
+      })
+      .catch((error) => {
+        console.error(error);
+        dispatch({ type: "SET_LOADING", payload: false });
+        dispatch({ type: "SET_ERROR", payload: true });
+      });
+  }
 
   function editItem(id) {
     navigate(`/edit/${id}`);
