@@ -13,7 +13,7 @@ const App = () => {
   function getData() {
     dispatch({ type: "SET_LOADING", payload: true });
     axios
-      .get("http://localhost:8080/api/items")
+      .get("https://crud-backend-red.vercel.app/api/items")
       .then((response) => {
         dispatch({ type: "SET_LOADING", payload: false });
         dispatch({ type: "SET_ERROR", payload: false });

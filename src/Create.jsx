@@ -8,7 +8,7 @@ const Create = () => {
   const { register, handleSubmit } = useForm();
   function createItem(data) {
     axios
-      .post("http://localhost:8080/api/items", data)
+      .post("https://crud-backend-red.vercel.app/api/items", data)
       .then((response) => {
         console.log(response);
         navigate("/");

@@ -22,7 +22,7 @@ const Edit = () => {
 
   function editItem(data) {
     axios
-      .put(`http://localhost:8080/api/items/${data._id}`, data)
+      .put(`https://crud-backend-red.vercel.app/api/items/${data._id}`, data)
       .then((response) => {
         console.log(response);
         navigate("/");

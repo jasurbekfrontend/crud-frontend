@@ -13,7 +13,7 @@ const Home = () => {
     navigate(`/edit/${id}`);
   }
   function deleteItem(id) {
-    axios.delete(`http://localhost:8080/api/items/${id}`);
+    axios.delete(`https://crud-backend-red.vercel.app/api/items/${id}`);
     getData();
   }
   return loading ? (
